@@ -1,21 +1,11 @@
 const express = require('express');
-const  session = require('express-session')
-const cookieParser = require('cookie-parser')
-const { v4: uuidv4 } = require("uuid");
 const userRouter = express.Router();
 const userCollection = require('../models/userSchema');
-const nocache = require('nocache');
+// const nocache = require('nocache');
+// const cookieParser = require('cookie-parser')
 
-userRouter.use(nocache())
-userRouter.use(cookieParser())
-
-// userRouter.use(
-//     session({
-//       secret: uuidv4(),
-//       resave: false,
-//       saveUninitialise: false,
-//     })
-//   );
+// userRouter.use(nocache())
+// userRouter.use(cookieParser())
 
 userRouter.get("/", (req, res) => {
     if (req.session.user) {
@@ -24,7 +14,6 @@ userRouter.get("/", (req, res) => {
       res.render('userLogin')
     }
   });
-
 
 userRouter.post('/login',async (req,res)=>{
     const data = await userCollection.findOne({email:req.body.email})
@@ -49,8 +38,6 @@ userRouter.get('/userDashboard',(req,res)=>{
         res.render('userDashboard')
     }
 })
-
-
 
 userRouter.get('/logout',(req,res)=>{
     req.session.user=null;

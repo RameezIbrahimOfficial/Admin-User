@@ -1,21 +1,12 @@
 const express = require('express')
-const { v4: uuidv4 } = require("uuid");
-const session = require('express-session')
-const cookieParser = require('cookie-parser')
 const adminRouter = express.Router();
 const adminCollection = require('../models/adminSchema')
 const userCollection = require('../models/userSchema')
-const nocache = require('nocache')
+// const cookieParser = require('cookie-parser')
+// const nocache = require('nocache')
 
-adminRouter.use(cookieParser());
-adminRouter.use(nocache());
-// adminRouter.use(
-//     session({
-//       secret: uuidv4(),
-//       resave: false,
-//       saveUninitialise: false,
-//     })
-//   );
+// adminRouter.use(cookieParser());
+// adminRouter.use(nocache());
 
 adminRouter.get('/',async (req,res)=>{
     if(req.session.admin){
@@ -90,7 +81,7 @@ adminRouter.post('/new-user',(req,res)=>{
 })
 
 adminRouter.get('/logout',(req,res)=>{
-    req.session.destroy();
+    req.session.admin = null;
     res.redirect("/");
 })
 
