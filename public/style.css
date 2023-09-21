@@ -1,0 +1,12 @@
+.center-div {
+  padding-top: 5%;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+body {
+  background-image: url("background_image.jpg");
+  background-size: cover;
+}

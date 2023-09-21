@@ -1,0 +1,14 @@
+<%- include("partials/header") %>
+
+<h1 style="text-align: center;" class="mt-5"><%= details%></h1>
+<div class="container mt-5">
+    <form action="/admin/updateUser" method="post" class="d-flex flex-column align-items-center gap-3">
+        <input type="email" name="email" value="" placeholder="Email"/>
+        <input type="text" name="first" value="" placeholder="First Name"/>
+        <input type="text" name="last" value="" placeholder="Last Name"/>
+        <input type="password" name="password" value="" placeholder="Password"/>
+        <button type="submit"><%=btn%></button>
+    </form>
+</div>
+
+<%- include("partials/footer") %>
