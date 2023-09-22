@@ -1,62 +1,18 @@
 const express = require('express');
 const userRouter = express.Router();
-const userCollection = require('../models/userSchema');
-// const nocache = require('nocache');
-// const cookieParser = require('cookie-parser')
+const userControllers = require('../controllers/userControllers')
 
-// userRouter.use(nocache())
-// userRouter.use(cookieParser())
 
-userRouter.get("/", (req, res) => {
-    if (req.session.user) {
-      res.redirect('/user/userDashboard')
-    } else {
-      res.render('userLogin')
-    }
-  });
+userRouter.get("/", userControllers.getUserRoute);
 
-userRouter.post('/login',async (req,res)=>{
-    const data = await userCollection.findOne({email:req.body.email})
-        if(data){
-            if(req.body.email !== data.email){
-                res.render('userLogin',{subreddit:"incorrect email"})
-            }else if(req.body.password !== data.password){
-                res.render('userLogin',{subreddit:"incorrect password"})
-            }else{
-                if(req.body.email == data.email && req.body.password == data.password){
-                    req.session.user = data.email
-                    res.render('userDashboard')
-                }
-            }
-        }else{
-            res.redirect('/')
-        }
-})
+userRouter.post('/login',userControllers.postLogin)
 
-userRouter.get('/userDashboard',(req,res)=>{
-    if(req.session.user){
-        res.render('userDashboard')
-    }
-})
+userRouter.get('/userDashboard',userControllers.getUserDashboard)
 
-userRouter.get('/logout',(req,res)=>{
-    req.session.user=null;
-    console.log(req.session)
-    res.redirect('/user')
-})
+userRouter.get('/logout',userControllers.getUserLogout)
 
-userRouter.get('/signup',(req,res)=>{
-    res.render('userSignup')
-})
+userRouter.get('/signup',userControllers.getUserSignup)
 
-userRouter.post('/signup',async (req,res)=>{
-    await userCollection.create({
-        email: req.body.email,
-        fname:req.body.fname,
-        lname:req.body.lname,
-        password:req.body.password
-    })
-    res.redirect('/')
-})
+userRouter.post('/signup',userControllers.postUserSignup)
 
 module.exports = userRouter

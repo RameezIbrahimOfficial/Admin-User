@@ -31,7 +31,7 @@ app.use(
 app.use('/admin',adminRouter)
 app.use('/user',userRouter)
   
-const db = mongoose.connect(CON_STR)
+const db = mongoose.connect(LOCAL_STR)
 
 app.get('/',(req,res)=>{
     if(req.session.user){
@@ -53,6 +53,7 @@ app.listen(PORT,async (req,res)=>{
             console.log("An Error Occured While connecting to Server")
         })
         console.log("SERVER STARTED")
+        console.log(`http://localhost:${PORT}`)
     }
     catch(err){
         console.log(err)

@@ -3,10 +3,22 @@
 <h1 style="text-align: center;" class="mt-5">Update Details</h1>
 <div class="container mt-5">
     <form action="/admin/updateUser?id=<%= user._id %>" method="post" class="d-flex flex-column align-items-center gap-3">
-        <input type="email" name="email" value="<%=user.email%>"/>
-        <input type="text" name="fname" value="<%= user.fname%>"/>
-        <input type="text" name="lname" value="<%=user.lname %>"/>
-        <input type="password" name="password" value="<%= user.password%>"/>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" value="<%=user.email%>"/>
+        </div>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" value="<%= user.fname%>"/>
+        </div>
+        <div class="form-group">
+            <label for="fname">Last Name</label>
+            <input type="text" name="lname" value="<%=user.lname %>"/>
+        </div>
+        <div class="form-group">
+            <label for="fname">Password</label>
+            <input type="text" name="password" value="<%= user.password%>"/>
+        </div>
         <button type="submit">Update</button>
     </form>
 </div>

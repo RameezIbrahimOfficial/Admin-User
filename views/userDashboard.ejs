@@ -1,7 +1,9 @@
 <%- include("partials/header") %>
+
 <div class="text-center center-div mt-5" id="login" >
-  <h3 style="color: black;">welcome to dashboard</h3>
-  <h5 style="color: black;">user@gmail.com</h5>
+  <h3 style="color: black;">Welcome to Dashboard</h3>
+  <h5 style="color: black;"><%=locals.user%></h5>
   <a href="/user/logout" style="color: black;">Logout</a>
 </div>
+
 <%- include("partials/footer") %>
