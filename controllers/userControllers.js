@@ -45,11 +45,18 @@ module.exports.getUserSignup = (req, res) => {
 };
 
 module.exports.postUserSignup = async (req, res) => {
-  await userCollection.create({
-    email: req.body.email,
-    fname: req.body.fname,
-    lname: req.body.lname,
-    password: req.body.password,
-  });
-  res.redirect("/");
+  const data = await userCollection.findOne({ email: req.body.email });
+  if (data) {
+    res.render("userSignup", {
+      error: "User With this email Already Exist try with different Email",
+    });
+  } else {
+    await userCollection.create({
+      email: req.body.email,
+      fname: req.body.fname,
+      lname: req.body.lname,
+      password: req.body.password,
+    });
+    res.redirect("/");
+  }
 };
