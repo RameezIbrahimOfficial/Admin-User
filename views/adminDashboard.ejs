@@ -12,7 +12,12 @@
 
   <form class="mb-3" action="/admin/searchUser" method="post">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search Users" name="search"/>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search Users"
+        name="search"
+      />
       <div class="input-group-append">
         <input type="submit" class="btn btn-primary" value="Search" />
       </div>
@@ -39,8 +44,16 @@
         <td><%=users[i].password %></td>
 
         <td>
-          <a href="/admin/updateUser?id=<%= users[i]._id %>" class="btn btn-primary">Edit</a>
-          <a href="/admin/deleteUser?id=<%= users[i]._id %>" class="btn btn-danger">Delete</a>
+          <a
+            href="/admin/updateUser?id=<%= users[i]._id %>"
+            class="btn btn-primary"
+            >Edit</a
+          >
+          <a
+            href="/admin/deleteUser?id=<%= users[i]._id %>"
+            class="btn btn-danger"
+            >Delete</a
+          >
         </td>
       </tr>
       <% } %>
@@ -48,6 +61,5 @@
   </table>
 </div>
 <% } else { %>
-  <p>Users Not found</p>
-<% } %>
-<%- include("partials/footer") %>
+<p>Users Not found</p>
+<% } %> <%- include("partials/footer") %>
