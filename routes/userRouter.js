@@ -10,8 +10,8 @@ userRouter.get("/userDashboard", userControllers.getUserDashboard);
 
 userRouter.get("/logout", userControllers.getUserLogout);
 
-userRouter.get("/signup", userControllers.getUserSignup);
-
-userRouter.post("/signup", userControllers.postUserSignup);
+userRouter.route("/signup")
+  .get(userControllers.getUserSignup)
+  .post(userControllers.postUserSignup);
 
 module.exports = userRouter;

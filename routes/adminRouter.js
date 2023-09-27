@@ -2,21 +2,21 @@ const express = require("express");
 const adminRouter = express.Router();
 const adminControllers = require("../controllers/adminControllers");
 
-adminRouter.get("/", adminControllers.getAdminRoute);
+adminRouter.route("/")
+  .get(adminControllers.getAdminRoute)
+  .post(adminControllers.postAdminRoute);
 
-adminRouter.post("/", adminControllers.postAdminRoute);
+adminRouter.route("/updateUser")
+  .get(adminControllers.getUpdateUser)
+  .post(adminControllers.postUpdateUser);
+
+adminRouter.route("/new-user")
+  .get(adminControllers.getNewUser)
+  .post(adminControllers.postNewUser);
 
 adminRouter.post("/searchUser", adminControllers.postSearchUser);
 
-adminRouter.get("/updateUser", adminControllers.getUpdateUser);
-
-adminRouter.post("/updateUser", adminControllers.postUpdateUser);
-
 adminRouter.get("/deleteUser", adminControllers.getDeleteUser);
-
-adminRouter.get("/new-user", adminControllers.getNewUser);
-
-adminRouter.post("/new-user", adminControllers.postNewUser);
 
 adminRouter.get("/logout", adminControllers.getLogout);
 
