@@ -3,12 +3,12 @@ The simple Website Where User can Login and Create Account, Admin can see the us
 
 Criteria that i followed :-
 
-✅Should have login, signup and home page for users.
-✅Should store the user data on a database.
-✅Login should be validated.
+✅Should have login, signup and home page for users.<br/>
+✅Should store the user data on a database.<br/>
+✅Login should be validated.<br/><br/>
 
-Admin panel :- 
-✅login with validation. 
-✅Admin can be able to view and perform a search on user data.
-✅Admin can be able to create, delete and edit user data.
-✅Sessions and cookies are handled properly.
+Admin panel :- <br/><br/>
+✅login with validation.<br/> 
+✅Admin can be able to view and perform a search on user data.<br/>
+✅Admin can be able to create, delete and edit user data.<br/>
+✅Sessions and cookies are handled properly.<br/>
